@@ -1,24 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MainScreen from './components/screens/MainScreen';
-import DetailsScreen from './components/screens/DetailsScreen';
-import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
+import { Provider } from 'react-redux';
+import configureStore from './redux/configStore';
+import NavigationControoler from './components/NavigationController';
 
-const RootStack = createStackNavigator(
-  {
-      Home: MainScreen,
-      Details: DetailsScreen,
-  },    
-  {
-      initialRouteName: 'Home',
-  }
-);
+const App = () => {
+  return (
+    <Provider store={configureStore()}>
+      <NavigationControoler />
+    </Provider>
+  )
+}
 
-const TabScreens = createBottomTabNavigator({
-  Tab: RootStack
-})
+export default App;
 
-export default TabScreens;
 
 
 

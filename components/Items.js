@@ -1,16 +1,21 @@
 import React from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { View, Text, Image, TouchableHighlight } from 'react-native';
 
-const Items = ({data, navigation}) => {
+const Items = ({data, navigation, occupations}) => {
+    
     return(
-        <View key={data.name} style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', backgroundColor: 'white', height: 80 }}>
-            <Text> {data.name} </Text>
-            <Button
-                style={{ marginLeft: 'auto'}}
-                title="Details"
-                onPress={() => navigation.navigate('Details')}
-            />
-        </View>
+        <TouchableHighlight  
+            onPress={() => navigation.navigate('Details', {data})}>
+            <View 
+                style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'center', backgroundColor: 'white', height: 80 }}
+                >
+                <Image style={{ width: 70, height: 80 }}
+                    source={{ uri: data.url }}
+                    />
+                <Text style={{ fontSize: 18}}> {data.name} </Text>
+                
+            </View>
+        </TouchableHighlight>
     );
          
 }
